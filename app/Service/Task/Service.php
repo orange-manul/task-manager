@@ -4,13 +4,12 @@ namespace App\Service\Task;
 
 use App\Models\Task;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class Service
 {
 
-    public function filterTasks($status = null)
+    public function filterTasks($status = null): LengthAwarePaginator
     {
         $query = Task::query();
 
@@ -18,7 +17,7 @@ class Service
             $query->where('status', $status);
         }
 
-        return $query->get();
+        return $query->paginate(10);
     }
 
     public function createTask(array $data)
