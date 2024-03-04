@@ -17,7 +17,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'string|max:255',
             'description' => 'string|max:255',
-            'status' => 'boolean',
+            'status' => 'string|max:15',
             'due_date' => 'date|nullable',
         ];
     }

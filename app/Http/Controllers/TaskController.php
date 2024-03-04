@@ -5,33 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Task\StoreRequest;
 use App\Http\Requests\Task\UpdateRequest;
 use App\Models\Task;
-use App\Service\Task\Service;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    protected $service;
 
-    public function __construct(Service $service)
+    public function index(Request $request)
     {
-        $this->service = $service;
-    }
+        $status = $request->input('status');
+        $tasks = $this->service->filterTasks($status);
 
-    public function index(): JsonResponse
-    {
-        $tasks = $this->service->getAllTasks();
-
-        if ($tasks->isEmpty()) {
-            return response()->json(['message' => 'No tasks'], 404);
-        }
-
-        return response()->json($tasks, 200);
+        return response()->json($tasks);
     }
 
     public function store(StoreRequest $request): JsonResponse
     {
         $data = $request->validated();
-
         $task = $this->service->createTask($data);
 
         return response()->json($task, 201);
@@ -45,10 +35,9 @@ class TaskController extends Controller
     public function update(UpdateRequest $request, Task $task): JsonResponse
     {
         $data = $request->only(['title', 'description', 'status', 'due_date']);;
+        $updateTask = $this->service->updateTask($task, $data);
 
-        $this->service->updateTask($task, $data);
-
-        return response()->json($task);
+        return response()->json($updateTask);
     }
 
     public function destroy(Task $task): JsonResponse
@@ -57,4 +46,5 @@ class TaskController extends Controller
 
         return response()->json(null, 204);
     }
+
 }

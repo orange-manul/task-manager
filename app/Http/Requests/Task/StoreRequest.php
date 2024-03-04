@@ -17,7 +17,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|string|max:50',
             'description' => 'required|string|max:255',
-            'status' => 'boolean',
+            'status' => 'string|max:15',
             'due_date' => 'date|nullable',
         ];
     }

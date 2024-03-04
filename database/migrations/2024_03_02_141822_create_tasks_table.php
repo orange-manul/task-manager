@@ -13,8 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->boolean('status')->default(false);
-            $table->timestamp('due_date')->nullable();
+            $table->enum('status', ['pending', 'completed'])->default('pending');
             $table->timestamps();
         });
     }
