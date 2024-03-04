@@ -40,29 +40,37 @@
     <tr>
       <th>Method</th>
       <th>URI</th>
+        <th>Link</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>GET</td>
       <td>/tasks</td>
+        <td>https://phpstack-1225085-4362162.cloudwaysapps.com/api/tasks</td>
     </tr>
     <tr>
       <td>POST</td>
       <td>/tasks</td>
+        <td>https://phpstack-1225085-4362162.cloudwaysapps.com/api/tasks</td>
     </tr>
     <tr>
       <td>GET</td>
       <td>/tasks/{id}</td>
+      <td>https://phpstack-1225085-4362162.cloudwaysapps.com/api/tasks/1</td>
     </tr>
     <tr>
       <td>PUT</td>
       <td>/tasks/{id}</td>
+      <td>https://phpstack-1225085-4362162.cloudwaysapps.com/api/tasks/1</td>
     </tr>
     <tr>
       <td>DELETE</td>
       <td>/tasks/{id}</td>
+      <td>https://phpstack-1225085-4362162.cloudwaysapps.com/api/tasks/1</td>
     </tr>
   </tbody>
 </table>
+
+
 
